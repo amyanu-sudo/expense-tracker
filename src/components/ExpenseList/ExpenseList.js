@@ -1,7 +1,8 @@
 import styles from "./ExpenseList.module.css";
 import Transaction from "../Transaction/Transaction";
 
-export default function ExpenseList({expenses}) {
+export default function ExpenseList({expenses, editExpense, deleteExpense}) {
+  
   
   return (
     <div className={styles.expenseListContainer}>
@@ -10,7 +11,7 @@ export default function ExpenseList({expenses}) {
         {/* Display transactions here */}
         {
           expenses.map((expense, index)=>{
-              return <Transaction key = {expense.id} expense = {expense} index = {index}/>
+              return <Transaction key = {expense.id} expense = {expense} index = {expense.id} editExpense={editExpense} deleteExpense={deleteExpense}/>
           })
         }
 

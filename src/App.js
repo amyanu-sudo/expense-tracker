@@ -12,6 +12,16 @@ export default function App() {
   const addExpense = (expense)=>{
       setExpenses([...expenses, expense]);
   }
+  
+  // Create function to delete an expense
+  const deleteExpense = (idx)=>{
+      setExpenses(expenses.filter((expense)=>expense.id !== idx));
+  }
+
+  // Create function to edit an expense
+  const editExpense = (updatedExpense, idx)=>{
+     setExpenses(expenses.map(expense=>expense.id === idx ? updatedExpense: expense));
+  }
 
   return (
     <>
@@ -23,7 +33,7 @@ export default function App() {
           {/* Render Expense Info here
           Render Expense List here */}
           <ExpenseInfo expenses = {expenses}/>
-          <ExpenseList expenses = {expenses}/>
+          <ExpenseList expenses = {expenses} editExpense = {editExpense} deleteExpense = {deleteExpense}/>
         </div>
       </div>
     </>
